@@ -203,7 +203,9 @@ def assign_weights(df, right, moneyness, uniform=False):
 def split_data(merged, method, trainstart, teststart, testend):
     # Drop the 'Unnamed: 0' column
     # merged.drop(columns=["Unnamed: 0"], inplace=True)
-
+  # Attempt to drop the first column if it has no name (likely 'Unnamed: 0')
+    if 'Unnamed: 0' in merged.columns:
+        merged = merged.drop(columns=['Unnamed: 0'])
     if method == "optionid":
         # Shuffle the unique option IDs
         oids = merged['optionid'].unique()
