@@ -39,6 +39,25 @@ warnings.filterwarnings("ignore")
 PUT_RIGHT = 0
 CALL_RIGHT = 1
 
+
+def download_and_read_csv(url):
+    """Downloads a CSV file from a URL and returns a pandas DataFrame.
+
+    Args:
+    url: The URL of the CSV file.
+
+    Returns:
+    A pandas DataFrame containing the CSV data.
+    """
+
+    response = requests.get(url)
+    response.raise_for_status()  # Raise an exception for error HTTP statuses
+
+    # Read the CSV content into a pandas DataFrame
+    df = pd.read_csv(io.StringIO(response.content.decode('utf-8')))
+
+    return df
+
 # Define our MLP model
 class SimpleNN(nn.Module):
     def __init__(self, input_size, output_size):
