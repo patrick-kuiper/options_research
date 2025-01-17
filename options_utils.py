@@ -33,7 +33,7 @@ from matplotlib import animation
 from mpl_toolkits.mplot3d import Axes3D
 
 from typing import Tuple, Union
-import gdown
+# import gdown
 warnings.filterwarnings("ignore")
 
 PUT_RIGHT = 0
